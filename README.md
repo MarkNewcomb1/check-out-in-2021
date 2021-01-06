@@ -81,3 +81,74 @@ Example:
 Again, there's no pre-defined "alert" button or "success" card - __you have to define those__. But it saves you from having to "break" some pre-made style like Bootstrap in order to not make it look like every other Bootstrap site out there. 
 
 [Docs](https://tailwindcss.com/)
+
+## GraphQL
+
+Query language for your API. Define a type and fields on those types.
+
+```js
+type Query {
+  me: User
+}
+ 
+type User {
+  id: ID
+  name: String
+}
+```
+
+then this query
+
+```
+{
+  me {
+    name
+  }
+}
+```
+
+might produce this JSON result:
+
+```json
+{
+  "me": {
+    "name": "Luke Skywalker"
+  }
+}
+```
+
+Cool thing is, the query has the has exactly the same shape as the result. No more getting back a whole bunch of other information in the query result you don't want to sift through. 
+
+## Datadog
+Monitoring service for cloud applications - Logs, Metrics. Can alert via email/slack for unexpected spikes, latency, etc. 
+
+## Svelte 
+Like React, Vue, etc. But it's a compiler instead of a framework/library. No virtual DOM. Whereas traditional frameworks like React do the bulk of their work in the browser, Svelte shifts that work into a compile step that happens when you build your app. It does not add any framework code, like React which also gets compilied, it compilies your application code and the framework code. _Svelte applications do not include framework references_. It outputs a super small bundle. Rich Harris is the only one developing it, as opposed to React/Angular/Vue that have either a company backing it or a team. 
+
+Example:
+
+`App.svelte`
+
+
+```html
+<script>
+	import Nested from './Nested.svelte';
+</script>
+
+<style>
+	p {
+		color: purple;
+		font-family: 'Comic Sans MS', cursive;
+		font-size: 2em;
+	}
+</style>
+
+<p>These styles...</p>
+<Nested/>
+```
+
+`Nested.svelte`
+
+```html
+<p>...don't affect this element</p>
+```
