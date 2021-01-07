@@ -152,3 +152,62 @@ Example:
 ```html
 <p>...don't affect this element</p>
 ```
+
+## Exilir API
+Phoenix is a framework for web development in the Exilir language. Ablity to add real-time functionality with channels. Ex: simple chat application with web sockets.
+
+## json2ts
+
+Generates a TypeScript interface from JSON - nice and quick
+
+```json
+{
+    "friend": {
+        "id": "23333422",
+        "name": "Fred"
+    }
+}
+```
+
+```js
+declare module namespace {
+
+    export interface Friend {
+        id: string;
+        name: string;
+    }
+
+    export interface RootObject {
+        friend: Friend;
+    }
+
+}
+```
+
+## Nuxt JS (Vue) - Next JS (React)
+In a regular Vue/React app, everything's loaded through JS, so web crawlers don't wait for the page to load. So they see a blank HTML page. Because in a client-rendered app, if you look at the source code, you won't see much - js files that load the application. Web crawlers can't see your content. Not good for SEO. 
+
+THIS will pre-load your app on the server, which improves SEO. 
+Overall the syntax isn't too different. 
+
+## Gatsby JS (React) - Gridesome (Vue) - static site generators
+Generated at build-time as opposed to real-time, making them super fast. 
+
+## When to use static vs Client-side rendering vs Server-side rendering
+In React that would be Gatsby vs Create React App vs Next.js
+
+Gatbsy and CRA are pretty simple, Next.js is slighlty more complex dealing with third-party libraries. First two are also simpler to deploy, whereas Next.js you need to pay for more, you'll have more servers to handle the content. BUT CRA isn't good for SEO, whereas Gatsby and Next are better for that. For where a data source has frequent updates, Next.js and CRA are pretty good at that, but Gatsby isn't as good. Like Reddit where posts, comments, and upvotes/downvotes are constantly happening, Gatsby either has to re-build the whole site every time there's an update, or dynamically fetch the data and render it client-side, but then CRA is better at that anyway. Next.js is best at a constantly-updating site. 
+
+## Deno 
+Server-side JS runtime written by the same person as Node.js. Intended to fix some of those Node flaws. Anagram for Node. Supports TypeScript - built in compilier. You can use "await" without a top-level "async," which is nice. 
+
+```js
+import { serve } from 'https://deno.land/std@0.50.0/http/server/ts';
+
+const server = serve({ port: 3000 });
+
+for await (const req of server) {
+    console.log('Incoming request');
+    req.respond({body: 'Message from Deno!});
+}
+```
